@@ -11,13 +11,13 @@
     $nomeusuario = $_POST['nomeusuario'];
     $senha = $_POST['senha'];
 
-    $stmt = $conn->prepare("SELECT `nomeusuario`, `senha` FROM `usuario` WHERE `nomeusuario` = :nomeusuario and `senha` = :senha");
+    $statement = $con->prepare("SELECT `nomeusuario`, `senha` FROM `usuario` WHERE `nomeusuario` = :nomeusuario and `senha` = :senha");
 
-    $stmt->bindparam(":nomeusuario", $nomeusuario);
-    $stmt->bindValue(":senha", md5($senha));
-    $stmt->execute();
+    $statement->bindparam(":nomeusuario", $nomeusuario);
+    $statement->bindValue(":senha", md5($senha));
+    $statement->execute();
 
-    if($stmt->rowCount() == 0){
+    if($statement->rowCount() == 0){
         echo "Usuário ou senha incorretas.";
         ?>
             <button><a href="login.html">Voltar</a></button>

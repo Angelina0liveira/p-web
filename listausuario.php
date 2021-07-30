@@ -16,7 +16,7 @@
     echo 'Usuários cadastrados';
     echo '<br/>'; echo '<br/>';
 
-    $sql = $conn->prepare("SELECT `NOME` FROM `USUARIO`");
+    $sql = $con->prepare("SELECT `NOME` FROM `USUARIO`");
     $sql->execute();
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 

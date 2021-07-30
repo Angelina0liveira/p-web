@@ -9,15 +9,15 @@
 
     $pesquisar = $_POST['pesquisar'];
 
-    $stmt = $conn->prepare("SELECT `nomeusuario` FROM `usuario` WHERE `nomeusuario` = :look");
+    $statement = $con->prepare("SELECT `nomeusuario` FROM `usuario` WHERE `nomeusuario` = :look");
 
-    $stmt->bindparam(":look", $pesquisar);
-    $stmt->execute();
+    $statement->bindparam(":look", $pesquisar);
+    $statement->execute();
 
-    if($stmt->rowCount() == 0){
+    if($statement->rowCount() == 0){
         echo "Usuário não existe. <br>";
     }else{
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
         echo "Usuário: <br>";
         foreach ($result as $key => $value) {
             echo $key.": ".$value."<br>";

@@ -17,11 +17,11 @@
     $senha = $user->getSenha();
     $i = 0;
 
-    $stmt = $conn ->prepare("INSERT INTO `usuario`(`nome`, `nomeusuario`, `email`, `senha`) 
+    $statement = $con ->prepare("INSERT INTO `usuario`(`nome`, `nomeusuario`, `email`, `senha`) 
     VALUES (:nome, :nomeusuario, :email, :senha)");
 
     $fetch = "SELECT `nomeusuario`,`email` FROM `usuario`";
-    $result = $conn->query($fetch);
+    $result = $con->query($fetch);
     while($row = $result->fetch()) {
         if($row['nomeusuario'] == $nomeusuario || $row['email'] == $email){
             $i++;
@@ -31,7 +31,7 @@
     if($i>0){
         echo "Usuário ou E-mail já existem";
     }else{
-        $stmt->execute(array(':nome' => $nome, ':nomeusuario' => $nomeusuario, ':email' => $email, ':senha'=> $senha));
+        $statement->execute(array(':nome' => $nome, ':nomeusuario' => $nomeusuario, ':email' => $email, ':senha'=> $senha));
 
         echo "Cadastro realizado com sucesso.";
         header("Location: login.html");
