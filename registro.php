@@ -1,4 +1,4 @@
-registro.php
+
 <?php
     include('conexao.php');
     include('usuario.php');
